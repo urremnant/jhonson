@@ -1,1 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/nipton?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: info12345
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
 
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
