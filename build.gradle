@@ -1,6 +1,6 @@
 /***
 *
-* 여기는 application을 만들기 위한 여러 라이브러리등 정보를 설정하는 페이지 입니다.
+* 여기는 application을 만들기 위한 여러  정보를 설정하는 페이지 입니다.
 * 
 * 화장실을 만드는 행위를 할때
 * 단순히 그냥 딱 화장실 어떻게 만들어야지 계획뿐만아니라
@@ -17,8 +17,8 @@
 */
 
 plugins {
-	id 'java'boot
-	id 'org.springframework.' version '3.0.2'
+	id 'java'
+	id 'org.springframework.boot' version '3.0.2'
 	id 'io.spring.dependency-management' version '1.1.0'
 	id 'org.asciidoctor.convert' version '2.4.0'
 }
