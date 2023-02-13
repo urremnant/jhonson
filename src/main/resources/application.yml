@@ -1,23 +1,80 @@
+####application.yml
+#
+# yml이 무엇일까요 저도 모르겠슴다
+# 이것도 하나의 설정양식으로 보면됩니다.
+# 밑에 보면 딱 설정들이 심플하게 생겼죠?
+# yaml파일이 아니라면 일일히 
+# 한row식 써야했을겁니다.
+#아래 spring 부분만 띄어서 봤을때
+# datasource를 properties 설정하려면 다음과 같이 해야했습니다.
+#   jdbc.driverClassName=org.mariadb.jdbc.Driver
+#   jdbc.url=jdbc:mariadb://localhost:3306/jhonson?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+#   jdbc.username=root
+#   jdbc.password=info12345
+#  취향차이긴 하지만 아래 쪽이 훨신 보기 편하지 않나요?
+################
 spring:
+#데이터 소스를 어디서 불러올지 정하는 부분입니다. 저는 제 로컬에 mariadb에서 가져올것이기 때문에 다음과 같이 설정했슴다. 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/nipton?serverTimezone=UTC&characterEncoding=UTF-8
+    #데이터를 어디서 갖고올지에 대한 주소입니다.
+    url: jdbc:mariadb://localhost:3306/jhonson?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: info12345
+##########jpa는 저도 모르겠슴다;;
+# 뭐라 설명해야할까요...
+# jpa를 성능좋은 로아 API 생각하면 될꺼같습니다. (API를 모르신다면 그냥 정보 쏴주는 URL로 간편히 생각합시다. 나중에 공부하시는걸로)
+# 예를 들면....음......
+# 존슨이라는 키작은 슈샤 있다는 가정을 해봅시다.
+# 과거에는 로아관련된 종합 정보 사이트가 없었기때문에
+# 공대장은 존슨이를 파티를 취직시킬지 말지 정하기 위해 길드원에게 물어보거나 인터넷 검색하면서 온갖 정의를 찾았을것입니다.
+# 존슨이는 1582.5로 나름 레벨도 높다, 워로드라 방깎시너지가 있다. 사멸들에게 좋은 백어택 피해증가가 있다. 무기가 20강이다 얘는 시엔의 후예를 땃다 등
+# 이걸 직접 여러 사람들과 사이트에서 물어보고 모은 내용 기반으로 레이드 취직을 시켰겠죠?
+# jpa는 로아 API에서 특정 키와 주소를 입력하여 '존슨s베이비로션'이란 애는 7멸홍 둘둘에 세구 18각에 악추피 %에 종합정보를 알고 파티 취직 여부를 바로 결정할수 있죠
+# jpa는 데이터를 불러올때 로아와처럼 하나의 데이터에 필요한 데이터를 불러오거나 저장할수 있겠금 해주는 유용한 프로그램이라 생각하시면 됨다.
+######################### 
   jpa:
-    database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
+    #####hibernate는 저도 모르겠슴다;;
+    # hibernate는 JPA 구현체라고 설명이 되는데
+    # 좀더 쉬운 개념으로 이해하면 저희가 로아 API로 쏜 정보로 무엇을 구현할지 구현체를 만드는 틀이라 생각하시면 됩니다.
+    # 음 좀더 야매 개념으로 설명드리면
+    # 로아 API가 jpa라면
+    # 로아 API에서 받은 정보를 이용하여 제일 싼 악세 세팅비용을 구현해주는 아이스펭이 hibernate라고 이해하시면 됩니다.(이게 맞나)
+    # 단순 데이터만 있다고해서 저희가 무언간 할수 있진 않잖아요?
+    # 데이터를 불러오고 그 데이터의 목적에 관하여 구현 =hibernate라고 생각하시면 될꺼 같슴다
+    ##
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
+######타임리프에 대한 url 설정입니다.
+# 타임리프는 템플릿 엔진입니다.
+# 저희가 html로 한페이지를 이뿌게 꾸미는데 그 페이지 꾸미는 양식을 보통 템플릿이라고 하쥬?
+# 타임리프는 그 템플릿을 보조해주는 휠체어 같은 친구라고 생각하면 됩니다.
+# 저희가 단순히 한페이지를 꾸미는것 뿐만아니라 DB에서 데이터를 불러와서 가공하는 작업을 하죠?
+# 그 가공하는 역할을 템플릿 엔진이합니다.
+# https://velog.io/@yoojinjangjang/Thymeleaf-%ED%83%80%EC%9E%84%EB%A6%AC%ED%94%84 여기 잘 설명되있군여
+# 타임리프 외에 jstl같은 수동휠체어 같은 친구들도 있는데 한번 생각나실때 슬슬 공부하시는걸 추천합니다.
+############################
   thymeleaf:
+  ##classpath:webContents는 webContents 폴더를 기반으로 디렉토리 경로를 보겠다라는 의미입니다.
+  # 어떤 경로를 지정할때 /jhonson/src/main/resources/webContents 이경로를 기준으로 보겠다는 거죠
+  # 만약 경로가 test.hml로 지정되있다면  /jhonson/src/main/resources/webContents/text.html을 보겠쥬
       prefix : classpath:webContents/
+      ##이거는 뒤에 무엇을 붙이냐의 의미입니다. 말그대로... 제가 test.html로 명시안하고 test라고 하기만 해도
+      #여기서 알잘딱하게 text 뒤에 .html을 붙여서 text.html을 읽는 다란 뜻이죠
       suffix : .html
+      # 캐싱을  한다는 것은 불러온 값을 저장한다는 의미입니다. 즉 한번 불러온것을 메모리 상에 저장해놓았다.
+      # 다시 불러올때는 메모리에 있는걸 다시불러온다는 의미이죠. 이값을 true로 해놓으면 제가 무언가를 수정했더라도
+      # 메모리상에 남아있는 모습 그대로 불러오기때문에 개발의 용이성을 위해 cache를 false로 해놓읍시다. 
       cache : false
-
+###### 이거 쓰는데만 한시간이 걸리다니 후덜덜;
+# 이 어플리케이션에서 한 작업들에 대한 기록을 어느 정도로 할것인지 설정한다고 생각하면 될꺼 같습니다.
+# 사실 쓰기 귀춘...
+##############
 logging:
   level:
     org.hibernate.SQL: debug
