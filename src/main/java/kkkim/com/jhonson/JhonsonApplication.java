@@ -27,6 +27,10 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 
 /***
+ * 
+ * class 개념
+ * http://www.tcpschool.com/java/java_class_intro
+ * 
  * extends의 의미 
  * 저희가 위에서  
  * import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

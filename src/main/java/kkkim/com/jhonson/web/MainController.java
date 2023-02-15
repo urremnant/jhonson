@@ -24,10 +24,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 	
-	@RequestMapping("/test")
+	@RequestMapping("/main")
 	public String test(Model model, @RequestParam(value="name",required=false, defaultValue="È¦¸®¸ô¸®") String name) {
 		model.addAttribute("name",name);
-		return "test";
+		return "/webPage/welCome";
 	}
 	
 	@RequestMapping("/vueSample")
