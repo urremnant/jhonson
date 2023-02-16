@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add CSS and JS to Thymeleaf</title>
+    <link th:href="@{/lib/node_modules/vuetify/dist/vuetify.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/lib/node_modules/vue/dist/vue.global.prod.js}"></script>
+    <script type="text/javascript" th:src="@{/lib/node_modules/vuetify/dist/vuetify.js}"></script>
+</head>
+<body>
+    <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>Hello world</v-container>
+      </v-content>
+    </v-app>
+  </div>
+   <div id="app"></div>
+</body>
+<script type="module">
+const { createApp } = Vue
+const { createVuetify } = Vuetify
+
+const vuetify = createVuetify({
+theme: {
+    defaultTheme: 'dark'
+  }
+});
+
+const app = createApp()
+app.use(vuetify).mount('#app')
+</script>
+
+</html>

@@ -27,7 +27,7 @@ public class MainController {
 	@RequestMapping("/main")
 	public String test(Model model, @RequestParam(value="name",required=false, defaultValue="È¦¸®¸ô¸®") String name) {
 		model.addAttribute("name",name);
-		return "/webPage/welCome";
+		return "main";
 	}
 	
 	@RequestMapping("/vueSample")
