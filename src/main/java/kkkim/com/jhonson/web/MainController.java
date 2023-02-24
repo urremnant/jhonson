@@ -1,8 +1,10 @@
 package kkkim.com.jhonson.web;
 
+import org.springframework.boot.web.server.MimeMappings;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -26,12 +28,18 @@ public class MainController {
 	
 	@RequestMapping("/main")
 	public String test(Model model, @RequestParam(value="name",required=false, defaultValue="圈府隔府") String name) {
+		 MimeMappings mappings = new MimeMappings(MimeMappings.DEFAULT);
+	        mappings.add("html", "application/vnd.hbbtv.xhtml+xml; charset=utf-8");
+	        mappings.add("xhtml", "application/vnd.hbbtv.xhtml+xml; charset=utf-8");
 		model.addAttribute("name",name);
-		return "main";
+		return "index";
 	}
 	
 	@RequestMapping("/vueSample")
 	public String vueSample(Model model, @RequestParam(value="name",required=false, defaultValue="圈府隔府") String name) {
+		 MimeMappings mappings = new MimeMappings(MimeMappings.DEFAULT);
+	        mappings.add("html", "application/vnd.hbbtv.xhtml+xml; charset=utf-8");
+	        mappings.add("xhtml", "application/vnd.hbbtv.xhtml+xml; charset=utf-8");
 		model.addAttribute("name",name);
 		return "/webPage/pageSample";
 	}
