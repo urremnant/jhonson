@@ -1,15 +1,11 @@
-const path = require('path');
 'use strict'
 const { VueLoaderPlugin } = require('vue-loader')
 module.exports = {
   mode: 'development',
   entry: [
-    './src/main.js',
+    './node_modules/vue/index.js'
+    ,'/node_modules/bootstrap-vue/src/index.js'
   ],
-    output: {
-    path: path.resolve(__dirname, 'dist/js'),
-    filename: 'bundle.js'
-  },
   module: {
     rules: [
       {
